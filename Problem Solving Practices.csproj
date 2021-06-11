@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="emp.cs" />
+    <Compile Include="Enumerator_Implementation.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runner_partial_Methods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
