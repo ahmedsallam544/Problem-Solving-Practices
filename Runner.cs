@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -227,7 +228,160 @@ namespace Problem_Solving_Practices
             // int[] arr = array.Clone();
             // array.CopyTo(arr);
 
+           // int[] arr = { 5, 6, 7, 8, 2, 3, 4, 4 };
 
+            // arr[arr.Length + 1] = 15; IndexOutOfRangeException: 
+            string s = "Sherihan";
+            //   s.Substring(s.Length + 1);  //Error  System.ArgumentOutOfRangeException
+
+            // arr = null ;
+            // arr.ToString();  //System.NullReferenceException
+            // Console.WriteLine(9/0); compilation error
+            // Enumerator.MoveNext(); 
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+            //  List<Employee> treeList = new List<Employee>();
+
+            //foreach (Employee item in treeList)
+            //{
+            //    if (treeList.Count == 0)
+            //    {
+            //        treeList.Add(item);
+            //    }
+            //}  //InvalidOperationException
+
+            Interface1 interfaceOperation;
+            interfaceOperation = new creative();
+
+            interfaceOperation.MyProperty = 5;
+            ((creative)interfaceOperation).print();
+
+            //Console.WriteLine(Program.Argument(null)); //  ArgumentNullException
+            // Console.WriteLine(Program.Argument(""));  //   ArgumentException
+            // Flow path without exception.
+            // Console.WriteLine(Program.A("test"));
+
+            int A = 7, B = 3, SumResult = 55, MulResult;
+            //SumMul(A, B, ref SumResult, out MulResult);
+
+            Type Typee = typeof(Calculator);
+            Console.WriteLine(Typee);
+            // Console.WriteLine(typeof(A)); // Error in compilations
+
+            // printer("ay haga",10);
+            // printer(N:5,Pattern:"*");  // no arrangement in parameter
+            int ana = new int(); //0 
+            int anaa = default; // 0
+            int annaa = 0;      // 0
+
+            Console.WriteLine($"{ana } {anaa } { annaa}");
+
+            // Int32 x = 8414;
+            // Int64 y = 2445454;
+            checked
+            {
+                // If an overflow happened, it will throw an exception.
+                //   x = (Int32)y;
+            }
+            //string nauul = null;
+            //int? nullable; // allow nulls
+            //int? y = 500;
+            //y = null;
+            //int x = 50;
+            //if (y.HasValue)
+            //{
+            //    x = (int)y;
+
+            //}
+            //y = x; //safe
+            //       //  x = y; //unsafe it needs an explicit casting
+            //x = (int)y; //explicit casting
+            //string name = "mostafa";
+
+            /*const*/
+            Employee emp = new Employee();
+            Console.WriteLine(typeof(emp));
+
+            //    Employee emo = default;//= emp; // equality in Refrence
+            //  emo.Equals(emp);
+            const int pi = 515;
+            const string gravity = "Adel Imam";
+            // const Employee ffd = emp ; Error must be number or strings
+            SortedList sort = new SortedList();
+
+            // sort.Add(2);
+            Console.WriteLine($"{pi} { gravity } ");
+            //pi = 4654;
+            //gravity = "sdaas";
+
+
+            var d = 15.3; // must have an initial value
+            d.GetType();
+            dynamic e = 15.3;
+            e = emp; // change type defition in runtime 
+                     // int[] arr = { 5, 6, 7, 8, 2, 3, 4 };
+            //arr = default;
+            //for (int i = 0; i < arr?.Length; i++) // use (arr?.Length) to get the length only if (arr) is not null
+            //{
+            //    Console.WriteLine(arr[i]);
+            //}
+
+
+            GC.Collect(0);
+            //Old Way
+            //  Console.WriteLine(HelperClass.FirstChar(name));
+            //  HelperClass.displayFirst(emp);
+
+            //New Way "Extension Method"
+            //Console.WriteLine(name.FirstChar());
+            //emp.displayFirst();
+
+
+            //Console.WriteLine(name?.Length ?? -1);
+            //StackTrace st = new StackTrace();
+            //Console.WriteLine(st.FrameCount);
+            //var stackFrames = st.GetFrames();
+            //foreach (var frame in stackFrames)
+            //{
+            //    Console.WriteLine(frame.GetMethod().Name);
+            //}
+
+
+
+
+
+
+
+            BaseClass c = new ChildClass();
+            ChildClass ss = new ChildClass();
+
+            //Console.WriteLine(c.GetMethodOwnerName());
+            // Console.WriteLine(c.MethodOwnerName());
+            //Console.WriteLine(s.GetMethodOwnerName());
+            //Console.WriteLine(s.MethodOwnerName());
+            // Console.WriteLine(s.A); Cannot acess private members of base class
+            //Program program = new Program();
+            //Console.WriteLine(program.Id);
+
+
+            //int x;
+
+            //Console.WriteLine("Table of Multiplication ");
+            //Console.ReadLine();
+
+            //for (int i = 1; i <= 12; i++)
+            //{
+            //    for (int k = 1; k <= 12; k++)
+            //    {
+            //        Console.WriteLine(k + " * " + i + " = " + (i*k));
+            //    }
+
+            //    Console.WriteLine("\n" + "/////////////////////////////////////////////");
+            //   // Console.ReadLine();
+
+            //}
 
 
         }
