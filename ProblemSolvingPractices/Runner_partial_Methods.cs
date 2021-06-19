@@ -8,15 +8,16 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-    /*
-     * Complete the 'circularPalindromes' function below.
-     *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts STRING s as parameter.
-     */
+   
 
         public static List<int> circularPalindromes(string s)
         {
+            /*
+            * Complete the 'circularPalindromes' function below.
+            *
+            * The function is expected to return an INTEGER_ARRAY.
+            * The function accepts STRING s as parameter.
+            */
             List<string> RotateResult = new List<string>() { s };
             for (int i = 0; i < s.Length-1; i++)
             {
@@ -42,7 +43,7 @@ namespace Problem_Solving_Practices
         private static List<string> CheckcircularPalindromes(string word )
         {
             List<string> SubstringsInWord = new List<string>();
-            if (word.ToCharArray().Length == 3)
+            if (word.ToCharArray().Length <= 3)
                 return new List<string>() { word };
             int lengthOfWord = word.Length -1;
             string SubWordToBeSubString;
@@ -57,7 +58,9 @@ namespace Problem_Solving_Practices
                 SubWordToBeSubString = word.Substring( i  , lengthOfWord--);
                 SubstringsInWord.Add(SubWordToBeSubString);
             }
-            var res = SubstringsInWord.Select(p => CheckcircularPalindromes(p).Distinct()).ToList();
+            SubstringsInWord.RemoveAll(p => p.Length < 3);
+            SubstringsInWord.Distinct();
+            var res = SubstringsInWord.Select(p => CheckcircularPalindromes(p)).ToList();
             foreach (var items in res)
             {
                 SubstringsInWord.AddRange(items);
@@ -75,7 +78,7 @@ namespace Problem_Solving_Practices
             {
                 if (i == reverseLength)
                     break;
-                if (word[i] == word[reverseLength])
+                else if (word[i] == word[reverseLength])
                     isPalindrome = true;
                 else
                     return false;
