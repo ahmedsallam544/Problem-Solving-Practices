@@ -8,7 +8,7 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-   
+
 
         public static List<int> circularPalindromes(string s)
         {
@@ -19,17 +19,17 @@ namespace Problem_Solving_Practices
             * The function accepts STRING s as parameter.
             */
             List<string> RotateResult = new List<string>() { s };
-            for (int i = 0; i < s.Length-1; i++)
+            for (int i = 0; i < s.Length - 1; i++)
             {
                 var lastestRotate = RotateResult.LastOrDefault();
-                RotateResult.Add(string.Concat(lastestRotate.Substring(1, s.Length - 1), 
+                RotateResult.Add(string.Concat(lastestRotate.Substring(1, s.Length - 1),
                                                lastestRotate.Substring(0, 1)));
             }
             // Check Pslindreomes 
             List<int> Results = new List<int>();
             foreach (var word in RotateResult)
             {
-                var AllPalindromesInthisWord = CheckcircularPalindromes(word).Distinct();
+                var AllPalindromesInthisWord = CheckcircularPalindromes(word , 0);
                 int MaxLengthInLineSubStrings = AllPalindromesInthisWord
                     .Where(str => IsPalindrome(str))
                     .Select(str => str.Length)
@@ -40,30 +40,57 @@ namespace Problem_Solving_Practices
 
         }
 
-        private static List<string> CheckcircularPalindromes(string word )
+        private static HashSet<string> CheckcircularPalindromes(string word , int MaxLineLength)
         {
-            List<string> SubstringsInWord = new List<string>();
+            if(MaxLineLength > word.Length)
+                return new HashSet<string>() { };
             if (word.ToCharArray().Length <= 3)
-                return new List<string>() { word };
-            int lengthOfWord = word.Length -1;
+                return new HashSet<string>() { word };
+            if (IsPalindrome(word))
+            {
+                MaxLineLength = word.Length;
+                return new HashSet<string>() { word };
+            }
+            HashSet<string> SubstringsInWord = new HashSet<string>();
+            int lengthOfWord = word.Length - 1;
             string SubWordToBeSubString;
             for (int i = 0; i < word.Length; i++)
             {
-                SubWordToBeSubString = word.Substring( 0 , lengthOfWord--);
+                SubWordToBeSubString = word.Substring(0, lengthOfWord--);
                 SubstringsInWord.Add(SubWordToBeSubString);
             }
             lengthOfWord = word.Length - 1;
-            for (int i =1 ; i < word.Length  ; i++)
+            for (int i = 1; i < word.Length; i++)
             {
-                SubWordToBeSubString = word.Substring( i  , lengthOfWord--);
+                SubWordToBeSubString = word.Substring(i, lengthOfWord--);
                 SubstringsInWord.Add(SubWordToBeSubString);
             }
-            SubstringsInWord.RemoveAll(p => p.Length < 3);
-            SubstringsInWord.Distinct();
-            var res = SubstringsInWord.Select(p => CheckcircularPalindromes(p)).ToList();
+            SubstringsInWord.RemoveWhere(p => p.Length < 3);
+            //foreach (var item in SubstringsInWord.OrderByDescending(p => p.Length))
+            //{
+            // var sd = SubstringsInWord.(item);
+            //    //SubstringsInWord.Select(p => p.IndexOfAny())
+
+            //}
+            //for (int i = 0; i < SubstringsInWord.Count; i++)
+            //{
+            //    var ser = SubstringsInWord.ElementAt(i);
+            //    SubstringsInWord.
+            //}
+            foreach (var wo in SubstringsInWord)
+            {
+                if (IsPalindrome(wo))
+                    if(MaxLineLength < wo.Length)
+                    MaxLineLength = wo.Length;
+            }
+            var res = SubstringsInWord 
+                .Where(t => t.Length > MaxLineLength) 
+                .Select(p => CheckcircularPalindromes(p , MaxLineLength))
+                .ToList();
             foreach (var items in res)
             {
-                SubstringsInWord.AddRange(items);
+                foreach (var item in items)
+                    SubstringsInWord.Add(item);
             }
             SubstringsInWord.Add(word);
             return SubstringsInWord;
@@ -72,7 +99,7 @@ namespace Problem_Solving_Practices
         {
             if (word.Length < 3)
                 return false;
-            int reverseLength = word.Length -1;
+            int reverseLength = word.Length - 1;
             bool isPalindrome = false;
             for (int i = 0; i < word.Length; i++)
             {
@@ -89,13 +116,13 @@ namespace Problem_Solving_Practices
 
         public static string timeConversion(string s)
         {
-          /*
-           *Complete the 'timeConversion' function below.
-           *Sample Input 0    07:05:45PM
-           *Sample Output 0   19:05:45
-           * The function is expected to return a STRING.
-           * The function accepts STRING s as parameter.
-           */
+            /*
+             *Complete the 'timeConversion' function below.
+             *Sample Input 0    07:05:45PM
+             *Sample Output 0   19:05:45
+             * The function is expected to return a STRING.
+             * The function accepts STRING s as parameter.
+             */
             var DateFormated = DateTime.Parse(s);
             return DateFormated.ToString("HH:mm:ss");
         }

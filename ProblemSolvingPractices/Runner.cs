@@ -12,7 +12,7 @@ namespace Problem_Solving_Practices
     {
         static void Main(string[] args)
         {
-             circularPalindromes("eededdeedede");
+             circularPalindromes("aaaaabbbbaaaa");
            //print(timeConversion("07:05:45PM"));
            //  Console.WriteLine(birthdayCakeCandless(new List<int>() { 3, 2, 1, 3 }));
            //  Console.WriteLine(birthdayCakeCandles(new List<int>() {4172213,785637,1727934,4057280,2759591,9999907,
