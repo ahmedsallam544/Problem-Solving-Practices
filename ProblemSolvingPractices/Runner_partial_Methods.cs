@@ -8,30 +8,189 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-        //public static int solution(int N)
-        //{
-        //    string result = string.Empty;
-        //    int i = 1;
-        //    bool minus = (N < 0);
-        //    var intList = Math.Abs(N).ToString().Select(digit => int.Parse(digit.ToString()));
-        //    foreach (var num in intList)
-        //    {
-        //        if (num < 5 && i++ == 1)
-        //        {
-        //            result += "5";
-        //        }
-        //        if (minus && num > 5 && i++ == 1)
-        //        {
-        //            result += "5";
-        //        }
-        //        result += num.ToString();
-        //    }
-        //    if (minus)
-        //        return -1 * Convert.ToInt32(result);
-        //    else
-        //        return Convert.ToInt32(result);
-        //}
+    /*
+     * Complete the 'circularPalindromes' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts STRING s as parameter.
+     */
 
+        public static List<int> circularPalindromes(string s)
+        {
+            List<string> RotateResult = new List<string>() { s };
+            for (int i = 0; i < s.Length-1; i++)
+            {
+                var lastestRotate = RotateResult.LastOrDefault();
+                RotateResult.Add(string.Concat(lastestRotate.Substring(1, s.Length - 1), 
+                                               lastestRotate.Substring(0, 1)));
+            }
+            // Check Pslindreomes 
+            List<int> Results = new List<int>();
+            foreach (var word in RotateResult)
+            {
+                var AllPalindromesInthisWord = CheckcircularPalindromes(word).Distinct();
+                int MaxLengthInLineSubStrings = AllPalindromesInthisWord
+                    .Where(str => IsPalindrome(str))
+                    .Select(str => str.Length)
+                    .Max();
+                Results.Add(MaxLengthInLineSubStrings);
+            }
+            return Results;
+
+        }
+
+        private static List<string> CheckcircularPalindromes(string word )
+        {
+            List<string> SubstringsInWord = new List<string>();
+            if (word.ToCharArray().Length == 3)
+                return new List<string>() { word };
+            int lengthOfWord = word.Length -1;
+            string SubWordToBeSubString;
+            for (int i = 0; i < word.Length; i++)
+            {
+                SubWordToBeSubString = word.Substring( 0 , lengthOfWord--);
+                SubstringsInWord.Add(SubWordToBeSubString);
+            }
+            lengthOfWord = word.Length - 1;
+            for (int i =1 ; i < word.Length  ; i++)
+            {
+                SubWordToBeSubString = word.Substring( i  , lengthOfWord--);
+                SubstringsInWord.Add(SubWordToBeSubString);
+            }
+            var res = SubstringsInWord.Select(p => CheckcircularPalindromes(p).Distinct()).ToList();
+            foreach (var items in res)
+            {
+                SubstringsInWord.AddRange(items);
+            }
+            SubstringsInWord.Add(word);
+            return SubstringsInWord;
+        }
+        private static bool IsPalindrome(string word)
+        {
+            if (word.Length < 3)
+                return false;
+            int reverseLength = word.Length -1;
+            bool isPalindrome = false;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (i == reverseLength)
+                    break;
+                if (word[i] == word[reverseLength])
+                    isPalindrome = true;
+                else
+                    return false;
+                reverseLength--;
+            }
+            return isPalindrome;
+        }
+
+        public static string timeConversion(string s)
+        {
+          /*
+           *Complete the 'timeConversion' function below.
+           *Sample Input 0    07:05:45PM
+           *Sample Output 0   19:05:45
+           * The function is expected to return a STRING.
+           * The function accepts STRING s as parameter.
+           */
+            var DateFormated = DateTime.Parse(s);
+            return DateFormated.ToString("HH:mm:ss");
+        }
+
+        // Lower Performance
+        public static int birthdayCakeCandles(List<int> candles)
+        { // 2 loops
+            var NumberOfHeightCandles = candles.Count(p => p == candles.Max());
+            return NumberOfHeightCandles;
+        }
+        // Best Performance
+        public static int birthdayCakeCandless(List<int> candles)
+        { // 1 loop
+            //Birthday Cake Candles
+            // You are in charge of the cake for a child's birthday. 
+            //You have decided the cake will have one candle for each year of their total age. 
+            //    They will only be able to blow out the tallest of the candles. 
+            //    Count how many candles are tallest.
+            //Example
+            //The maximum height candles are  units high.There are of them, so return .
+            int Max = 0;
+            int Count = 0;
+            foreach (var item in candles)
+            {
+                if (item == Max)
+                    Count++;
+                if (item > Max)
+                {
+                    Max = item;
+                    Count = 1;
+                }
+            }
+            return Count;
+        }
+        public static void miniMaxSum(List<int> arr)
+        {
+            long min = 0, max = 0, sum = 0;
+            min = arr[0];
+            max = min;
+            sum = min;
+            for (int i = 1; i < arr.Count; i++)
+            {
+                sum += arr[i];
+                if (arr[i] < min)
+                {
+                    min = arr[i];
+                }
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+            }
+            Console.WriteLine((sum - max) + " " + (sum - min));
+
+        }
+        public static int solution(int N)
+        {
+            string result = string.Empty;
+            int i = 1;
+            bool minus = (N < 0);
+            var intList = Math.Abs(N).ToString().Select(digit => int.Parse(digit.ToString()));
+            foreach (var num in intList)
+            {
+                if (num < 5 && i++ == 1)
+                {
+                    result += "5";
+                }
+                if (minus && num > 5 && i++ == 1)
+                {
+                    result += "5";
+                }
+                result += num.ToString();
+            }
+            if (minus)
+                return -1 * Convert.ToInt32(result);
+            else
+                return Convert.ToInt32(result);
+        }
+        public static void staircase(int n)
+        {
+            // Staircase detail
+            //This is a staircase of size :
+            //   #
+            //  ##
+            // ###
+            //####
+            for (int i = 0; i < n; i++)
+            {
+                //3 sp + #   => 1 = i
+                //2 sp + ##   => 2
+                for (int sp = 0; sp < n - (i + 1); sp++)
+                    Console.Write(" ");
+                for (int j = 0; j <= i; j++)
+                    Console.Write("#");
+                Console.WriteLine();
+            }
+
+        }
         public static int MaxValueWithremove5(int N)
         {
             List<int> Indecies = new List<int>();

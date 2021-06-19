@@ -8,11 +8,27 @@ using System.Threading.Tasks;
 
 namespace Problem_Solving_Practices
 {
-   public partial class Runner
+    public partial class Runner
     {
         static void Main(string[] args)
         {
-
+             circularPalindromes("eededdeedede");
+           //print(timeConversion("07:05:45PM"));
+           //  Console.WriteLine(birthdayCakeCandless(new List<int>() { 3, 2, 1, 3 }));
+           //  Console.WriteLine(birthdayCakeCandles(new List<int>() {4172213,785637,1727934,4057280,2759591,9999907,
+           //     7581231,8003508,6238505,1703322,1765333,2002383,713851,8906901,5064552,1953770,2620375,7993420,
+           //     3002285,3658299,7900670,6972689,3743150,8941362,3278592,9999907,7986652,6562470,6355117,9999907,
+           //     33003,6664223,5228054,9999907,4181388,9453448,8884761,3316855,3201952,6166159,6169138,3527318,
+           //     9999907,4837532,6725408,8369052,4672142,2460008,1872708,9076495,8216573,2228721,7301760,7978419,
+           //     400057,2154109,564573,3893474,228723,5120661,1656801,4143370,726055,4329026,3380162,7364156,7463192
+           //     ,9676068,45878,601273,4830686,6043081,6383858,7344425,727621,7093135,9999907,7762124,8831233,7046282,
+           //     2646866,328325,8467788,9999907,5827641,3190416,2472649,9513693,6768187,9999907,7708288,3057664,9324828,
+           //     9286142,1361894,7042098,7638592,5004437,9999907,3309099,1102232,3231756,3157189,4719135,2987591,9999907,
+           //     677962,5956014,8492294,6259132,1839734,9980012,1931337,3503659,3693851,8583054,9642500,6371656,9999907,9116105,
+           //     5293973,9310648,8097135,8084970,7594183,9999907,8924391,6524119,74952
+           //}));
+           // miniMaxSum(new List<int>() { 256741038, 623958417, 467905213, 714532089, 938071625 });
+           // staircase(4);
 
             List<List<int>> arr = new List<List<int>>() {
                 new List<int>(){ 11, 2, 4 },
@@ -228,7 +244,7 @@ namespace Problem_Solving_Practices
             // int[] arr = array.Clone();
             // array.CopyTo(arr);
 
-           // int[] arr = { 5, 6, 7, 8, 2, 3, 4, 4 };
+            // int[] arr = { 5, 6, 7, 8, 2, 3, 4, 4 };
 
             // arr[arr.Length + 1] = 15; IndexOutOfRangeException: 
             string s = "Sherihan";
@@ -322,11 +338,11 @@ namespace Problem_Solving_Practices
             dynamic e = 15.3;
             e = emp; // change type defition in runtime 
                      // int[] arr = { 5, 6, 7, 8, 2, 3, 4 };
-            //arr = default;
-            //for (int i = 0; i < arr?.Length; i++) // use (arr?.Length) to get the length only if (arr) is not null
-            //{
-            //    Console.WriteLine(arr[i]);
-            //}
+                     //arr = default;
+                     //for (int i = 0; i < arr?.Length; i++) // use (arr?.Length) to get the length only if (arr) is not null
+                     //{
+                     //    Console.WriteLine(arr[i]);
+                     //}
 
 
             GC.Collect(0);
@@ -384,6 +400,15 @@ namespace Problem_Solving_Practices
             //}
 
 
+        }
+
+        public static void print(string WhatUWant)
+        {
+            Console.WriteLine(WhatUWant);
+        }
+        public static void print(int WhatUWant)
+        {
+            Console.WriteLine(WhatUWant);
         }
 
     }
