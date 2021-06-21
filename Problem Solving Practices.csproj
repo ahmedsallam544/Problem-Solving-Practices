@@ -50,8 +50,9 @@
     <Compile Include="ProblemSolvingPractices\Enumerator_Implementation.cs" />
     <Compile Include="ProblemSolvingPractices\FileFormater.cs" />
     <Compile Include="ProblemSolvingPractices\Runner.cs" />
+    <Compile Include="ProblemSolvingPractices\Runner_partial_Methods.LettCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProblemSolvingPractices\Runner_partial_Methods.cs" />
+    <Compile Include="ProblemSolvingPractices\Runner_partial_Methods.HackerRank.cs" />
     <Compile Include="ProblemSolvingPractices\Size.cs" />
   </ItemGroup>
   <ItemGroup>

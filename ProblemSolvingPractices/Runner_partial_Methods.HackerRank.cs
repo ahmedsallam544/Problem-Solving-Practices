@@ -8,7 +8,7 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-
+      
 
         public static List<int> circularPalindromes(string s)
         {
@@ -18,74 +18,61 @@ namespace Problem_Solving_Practices
             * The function is expected to return an INTEGER_ARRAY.
             * The function accepts STRING s as parameter.
             */
-            List<string> RotateResult = new List<string>() { s };
-            for (int i = 0; i < s.Length - 1; i++)
-            {
-                var lastestRotate = RotateResult.LastOrDefault();
-                RotateResult.Add(string.Concat(lastestRotate.Substring(1, s.Length - 1),
-                                               lastestRotate.Substring(0, 1)));
-            }
-            // Check Pslindreomes 
+            //List<string> RotateResult = new List<string>() { s };
+            StringBuilder word = new StringBuilder(s);
             List<int> Results = new List<int>();
-            foreach (var word in RotateResult)
+            for (int i = 0; i < s.Length ; i++)
             {
-                var AllPalindromesInthisWord = CheckcircularPalindromes(word , 0);
+                var lastestRotate = word;
+                // Check Pslindreomes 
+                var AllPalindromesInthisWord = CheckcircularPalindromes(word, 0);
                 int MaxLengthInLineSubStrings = AllPalindromesInthisWord
-                    .Where(str => IsPalindrome(str))
+                    .Where(str => IsPalindrome(str.ToString()))
                     .Select(str => str.Length)
                     .Max();
                 Results.Add(MaxLengthInLineSubStrings);
+                word = new StringBuilder(string.Concat(lastestRotate.ToString().Substring(1, s.Length - 1), lastestRotate.ToString().Substring(0, 1)));
             }
+          
             return Results;
 
         }
-
-        private static HashSet<string> CheckcircularPalindromes(string word , int MaxLineLength)
+        private static HashSet<StringBuilder> CheckcircularPalindromes(StringBuilder word, int MaxLineLength)
         {
-            if(MaxLineLength > word.Length)
-                return new HashSet<string>() { };
-            if (word.ToCharArray().Length <= 3)
-                return new HashSet<string>() { word };
-            if (IsPalindrome(word))
+            if (MaxLineLength > word.Length)
+                return new HashSet<StringBuilder>() { };
+            if (word.Length <= 1)
+                return new HashSet<StringBuilder>() { word };
+            if (IsPalindrome(word.ToString()))
             {
                 MaxLineLength = word.Length;
-                return new HashSet<string>() { word };
+                return new HashSet<StringBuilder>() { word };
             }
-            HashSet<string> SubstringsInWord = new HashSet<string>();
+            HashSet<StringBuilder> SubstringsInWord = new HashSet<StringBuilder>();
             int lengthOfWord = word.Length - 1;
-            string SubWordToBeSubString;
+            StringBuilder SubWordToBeSubString;
             for (int i = 0; i < word.Length; i++)
             {
-                SubWordToBeSubString = word.Substring(0, lengthOfWord--);
+                SubWordToBeSubString = new StringBuilder(word.ToString().Substring(0, lengthOfWord--));
                 SubstringsInWord.Add(SubWordToBeSubString);
             }
             lengthOfWord = word.Length - 1;
             for (int i = 1; i < word.Length; i++)
             {
-                SubWordToBeSubString = word.Substring(i, lengthOfWord--);
+                SubWordToBeSubString = new StringBuilder(word.ToString().Substring(i, lengthOfWord--));
                 SubstringsInWord.Add(SubWordToBeSubString);
             }
-            SubstringsInWord.RemoveWhere(p => p.Length < 3);
-            //foreach (var item in SubstringsInWord.OrderByDescending(p => p.Length))
-            //{
-            // var sd = SubstringsInWord.(item);
-            //    //SubstringsInWord.Select(p => p.IndexOfAny())
-
-            //}
-            //for (int i = 0; i < SubstringsInWord.Count; i++)
-            //{
-            //    var ser = SubstringsInWord.ElementAt(i);
-            //    SubstringsInWord.
-            //}
+            SubstringsInWord.RemoveWhere(p => p.Length <= 1 || p.Length <= MaxLineLength);
+       
             foreach (var wo in SubstringsInWord)
             {
-                if (IsPalindrome(wo))
-                    if(MaxLineLength < wo.Length)
-                    MaxLineLength = wo.Length;
+                if (IsPalindrome(wo.ToString()))
+                    if (MaxLineLength < wo.Length)
+                        MaxLineLength = wo.Length;
             }
-            var res = SubstringsInWord 
-                .Where(t => t.Length > MaxLineLength) 
-                .Select(p => CheckcircularPalindromes(p , MaxLineLength))
+            var res = SubstringsInWord
+                .Where(t => t.Length > MaxLineLength)
+                .Select(p => CheckcircularPalindromes(p, MaxLineLength))
                 .ToList();
             foreach (var items in res)
             {
@@ -95,9 +82,65 @@ namespace Problem_Solving_Practices
             SubstringsInWord.Add(word);
             return SubstringsInWord;
         }
+
+        //private static HashSet<string> CheckcircularPalindromes(string word , int MaxLineLength)
+        //{
+        //    if(MaxLineLength > word.Length)
+        //        return new HashSet<string>() { };
+        //    if (word.ToCharArray().Length <= 1)
+        //        return new HashSet<string>() { word };
+        //    if (IsPalindrome(word))
+        //    {
+        //        MaxLineLength = word.Length;
+        //        return new HashSet<string>() { word };
+        //    }
+        //    HashSet<string> SubstringsInWord = new HashSet<string>();
+        //    int lengthOfWord = word.Length - 1;
+        //    string SubWordToBeSubString;
+        //    for (int i = 0; i < word.Length; i++)
+        //    {
+        //        SubWordToBeSubString = word.Substring(0, lengthOfWord--);
+        //        SubstringsInWord.Add(SubWordToBeSubString);
+        //    }
+        //    lengthOfWord = word.Length - 1;
+        //    for (int i = 1; i < word.Length; i++)
+        //    {
+        //        SubWordToBeSubString = word.Substring(i, lengthOfWord--);
+        //        SubstringsInWord.Add(SubWordToBeSubString);
+        //    }
+        //    SubstringsInWord.RemoveWhere(p => p.Length <= 1);
+        //    //foreach (var item in SubstringsInWord.OrderByDescending(p => p.Length))
+        //    //{
+        //    // var sd = SubstringsInWord.(item);
+        //    //    //SubstringsInWord.Select(p => p.IndexOfAny())
+
+        //    //}
+        //    //for (int i = 0; i < SubstringsInWord.Count; i++)
+        //    //{
+        //    //    var ser = SubstringsInWord.ElementAt(i);
+        //    //    SubstringsInWord.
+        //    //}
+        //    foreach (var wo in SubstringsInWord)
+        //    {
+        //        if (IsPalindrome(wo))
+        //            if(MaxLineLength < wo.Length)
+        //            MaxLineLength = wo.Length;
+        //    }
+        //    var res = SubstringsInWord 
+        //        .Where(t => t.Length > MaxLineLength) 
+        //        .Select(p => CheckcircularPalindromes(p , MaxLineLength))
+        //        .ToList();
+        //    foreach (var items in res)
+        //    {
+        //        foreach (var item in items)
+        //            SubstringsInWord.Add(item);
+        //    }
+        //    SubstringsInWord.Add(word);
+        //    return SubstringsInWord;
+        //}
         private static bool IsPalindrome(string word)
         {
-            if (word.Length < 3)
+            if (word.Length <= 1)
                 return false;
             int reverseLength = word.Length - 1;
             bool isPalindrome = false;

@@ -56,6 +56,7 @@ namespace Problem_Solving_Practices
             Console.WriteLine("This Animal is Wolf ");
         }
     }
+
     internal static class Program
     {
         //private static double MinSalary = 3000;
