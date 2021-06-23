@@ -12,6 +12,10 @@ namespace Problem_Solving_Practices
     {
         static void Main(string[] args)
         {
+            //print(ToCamelCase("the-stealth-warrior"));
+            //print(ToCamelCase("eidlupnooc_oyxcjggwnvEwrpewokcu")); 
+                //"theStealthWarrior");
+
             List<List<string>> items = new List<List<string>>() {
                new List<string>() { "phone", "blue", "pixel" },
                new List<string>() {"computer", "silver", "phone" },

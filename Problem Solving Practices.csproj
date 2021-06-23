@@ -45,14 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProblemSolvingPractices\CodeWars.cs" />
     <Compile Include="ProblemSolvingPractices\DisposableClass.cs" />
     <Compile Include="ProblemSolvingPractices\emp.cs" />
     <Compile Include="ProblemSolvingPractices\Enumerator_Implementation.cs" />
     <Compile Include="ProblemSolvingPractices\FileFormater.cs" />
     <Compile Include="ProblemSolvingPractices\Runner.cs" />
-    <Compile Include="ProblemSolvingPractices\Runner_partial_Methods.LettCode.cs" />
+    <Compile Include="ProblemSolvingPractices\LettCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProblemSolvingPractices\Runner_partial_Methods.HackerRank.cs" />
+    <Compile Include="ProblemSolvingPractices\HackerRank.cs" />
     <Compile Include="ProblemSolvingPractices\Size.cs" />
   </ItemGroup>
   <ItemGroup>
