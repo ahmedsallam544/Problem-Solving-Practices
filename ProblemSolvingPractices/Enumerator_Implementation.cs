@@ -43,14 +43,21 @@ namespace Problem_Solving_Practices
         {
             foreach (var s in _collection)
             {
-                if (s.Length > _config.MaxLength && s.Length < _config.MinLength)
+                if(_config.MinLength != -1)
+                    if (s.Length < _config.MinLength)
+                        continue;
+                if (_config.MaxLength != -1)
+                    if (s.Length > _config.MaxLength ) 
                     continue;
-                if (_config.StartWithCapitalLetter)
-                    if (!char.IsUpper(s, 0))
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (_config.StartWithCapitalLetter)
+                       if (!char.IsUpper(s, 0))
                         continue;
-                if (_config.StartWithDigit)
-                    if (!char.IsDigit(s, 0))
-                        continue;
+                    if (_config.StartWithDigit)
+                        if (!char.IsDigit(s, 0))
+                            continue;
+                }
                 yield return s;
             }
         }

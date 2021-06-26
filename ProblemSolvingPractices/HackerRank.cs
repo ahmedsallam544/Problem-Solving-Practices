@@ -283,26 +283,8 @@ namespace Problem_Solving_Practices
         }
         //The custom enumerator will return strings that are longer or equal to 3 charaters
         //and shorter or equal 10 characters and start with a capital letter.
-        ///^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$ phone expression number
-        public static string TreeConstructor(string[] strArr)
-        {
-            Dictionary<int, List<int>> keyValues = new Dictionary<int, List<int>>();
-            foreach (var Pair in strArr)
-            {
-                //var Words = Pair.Split(",");
-                //var Child = Convert.ToInt32(Words.First().Remove(0, 1));
-                //var Parent = Convert.ToInt32(Words.Last().Remove(1));
-                //if (keyValues.ContainsKey(Parent))
-                //    keyValues[Parent].Add(Child);
-                //else
-                //    keyValues.Add(Parent, new List<int>() { Child });
-            }
-
-            var notValid = keyValues.Any(p => p.Value.Count > 2);
-            notValid |= keyValues.Where(h => h.Value.Count > 1).All(i => i.Value.All(t => t > i.Key));
-            notValid |= keyValues.Where(h => h.Value.Count > 1).All(i => i.Value.All(t => t < i.Key));
-            return notValid ? "false" : "true";
-        }
+        ///*/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$*/ phone expression number
+     
 
         public static string palindrome(string S)
         {

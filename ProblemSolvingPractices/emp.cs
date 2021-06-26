@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Problem_Solving_Practices
 {
     public class emp
     {
+        [Description("this is the Age Value ")]
         public int Age { get; set; }
     }
 

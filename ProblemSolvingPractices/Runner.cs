@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +12,34 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-        static void Main(string[] args)
+        static void /*int*/ Main(string[] args)
         {
+            //   return 1; 
+            var dir = Directory.GetCurrentDirectory(); 
+           // var _object = new emp();
+           //print(GetAttributefortheProperty(_object,"Age"));
+
+            // A sample showing how CustomStringEnumerator & EnumeratorConfig will be used
+            //var collection = new string[] {
+            //        "A", "12345" , "Bb", "ccc","^&^&ghgdsf44sassss","234dgf55",
+            //        "432432", "ASSJSJSFDSDD" , String.Empty, String.Empty };
+            //var config = new EnumeratorConfig()
+            //{
+            //    MaxLength = 6
+            //};
+            //var enumerator = new CustomStringEnumerator(collection, config);
+            //foreach (var wo in enumerator)
+            //{
+            //    print(wo);
+            //}  
             //print(ToCamelCase("the-stealth-warrior"));
             //print(ToCamelCase("eidlupnooc_oyxcjggwnvEwrpewokcu")); 
-                //"theStealthWarrior");
+            //"theStealthWarrior");
 
             List<List<string>> items = new List<List<string>>() {
-               new List<string>() { "phone", "blue", "pixel" },
-               new List<string>() {"computer", "silver", "phone" },
-               new List<string>() {"phone", "gold", "iphone" }   };
+           new List<string>() { "phone", "blue", "pixel" },
+           new List<string>() {"computer", "silver", "phone" },
+           new List<string>() {"phone", "gold", "iphone" }   };
 
             //, ruleKey = "type", ruleValue = "phone"
             CountMatches(items, "type", "phone");
@@ -44,11 +64,11 @@ namespace Problem_Solving_Practices
             // miniMaxSum(new List<int>() { 256741038, 623958417, 467905213, 714532089, 938071625 });
             // staircase(4);
 
-                List<List<int>> arr = new List<List<int>>() {
-                new List<int>(){ 11, 2, 4 },
-                new List<int>(){ 4 ,5 , 6 },
-                new List<int>(){ 10, 8, - 12 }
-            };
+            List<List<int>> arr = new List<List<int>>() {
+            new List<int>(){ 11, 2, 4 },
+            new List<int>(){ 4 ,5 , 6 },
+            new List<int>(){ 10, 8, - 12 }
+        };
             diagonalDifference(arr);
 
             emp obj = new emp();
@@ -413,6 +433,15 @@ namespace Problem_Solving_Practices
 
             //}
 
+
+        }
+
+        private static string GetAttributefortheProperty(object _object , string PropertyName)
+        {
+            AttributeCollection attributes = TypeDescriptor.GetProperties(_object)[PropertyName].Attributes;
+            DescriptionAttribute DescAttribute = (DescriptionAttribute)attributes[typeof(DescriptionAttribute)];
+            print(DescAttribute.Description);
+            return DescAttribute.Description;
 
         }
 
