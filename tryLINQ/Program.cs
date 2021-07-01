@@ -37,6 +37,7 @@ namespace Problem_Solving_Practices
     struct me {
 
        public int w ; // CaNOt be intialized in structure
+      
     }
     interface IAnimal
     {
@@ -55,10 +56,15 @@ namespace Problem_Solving_Practices
         {
             Console.WriteLine("This Animal is Wolf ");
         }
+
     }
 
+    
     internal static class Program
     {
+
+
+
         //private static double MinSalary = 3000;
 
         static int WordCount(this String str)

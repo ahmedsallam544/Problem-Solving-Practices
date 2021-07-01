@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Problem_Solving_Practices.ComparisonTechneqies;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,14 +8,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Problem_Solving_Practices.ComparisonTechneqies.Parallel_Collection_Statement;
 
 namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
+      
+ 
         static void /*int*/ Main(string[] args)
         {
-            //   return 1; 
+ 
+            Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.Foreach, "Foreach");
+            Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.forLoop, "forLoop");
+            Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.ParallelForEach, "ParallelForEach");
+
+
             var dir = Directory.GetCurrentDirectory(); 
            // var _object = new emp();
            //print(GetAttributefortheProperty(_object,"Age"));

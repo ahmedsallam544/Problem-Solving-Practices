@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComparisonTechneqies\Parallel Collection Statement.cs" />
     <Compile Include="ProblemSolvingPractices\CoderByte.cs" />
     <Compile Include="ProblemSolvingPractices\CodeWars.cs" />
     <Compile Include="ProblemSolvingPractices\DisposableClass.cs" />
@@ -89,5 +90,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
