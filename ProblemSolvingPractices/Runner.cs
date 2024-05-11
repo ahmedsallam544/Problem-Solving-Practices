@@ -1,4 +1,5 @@
 ﻿using Problem_Solving_Practices.ComparisonTechneqies;
+using Problem_Solving_Practices.Topics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,15 +19,76 @@ namespace Problem_Solving_Practices
  
         static void /*int*/ Main(string[] args)
         {
- 
+            #region Use Undexer
+            
+            // Usage example
+            Indexer myIndesxerClass = new Indexer();
+            myIndesxerClass[0] = "Ahmed";
+            myIndesxerClass[1] = "Ali";
+            myIndesxerClass[2] = "Fatma";
+            myIndesxerClass[3] = "Waleed";
+            string value = myIndesxerClass[0];
+            print(myIndesxerClass[0]);
+            print(myIndesxerClass[1]);
+            print(myIndesxerClass[2]);
+            print(myIndesxerClass[3]);
+            #endregion
+
+            #region applesOranges 
+            int s = 7; 
+            int t = 11; 
+            int a = 5; 
+            int b = 15;  
+            int m = 3; 
+            int n = 2;
+
+            List<int> apples = new List<int>(){ -2 , 2, 1 };
+            List<int> oranges = new List<int>() { 5 , -6 };
+            countApplesAndOranges(s, t, a, b, apples, oranges);
+
+            #endregion
+
+
+
+            RefOutINRecursion refOut = new RefOutINRecursion();
+           var refOutResult = refOut.SendRefRecursion();
+            var refOutResult1 = refOut.SendOutRecursion();
+
+
+            double Magic = 1.0;
+            //var Magic1 = ++Magic / Magic; // 1 , v = 2
+            //var Magic2 = Magic++ + Magic; // 5,  v= 3
+            Magic += ++Magic / Magic * (Magic++) + --Magic;
+            var why = ++Magic / Magic * (Magic++) + --Magic;
+            Magic += why;
+            print(Magic.ToString());
+
+
+
+            // Creating an instance of class
+            // Complex C invokes constructor
+            Vect C = new Vect();
+
+            // Calling SetValue method using
+            // instance C Setting values of
+            // real to 2 and img to 3
+            C.SetValue(2, 3);
+
+            // Displaying values of real
+            // and imaginary parts
+            C.DisplayValue();
+
+            // Instance is no longer needed
+            // Destructor will be called
+
             Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.Foreach, "Foreach");
             Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.forLoop, "forLoop");
             Parallel_Collection_Statement.Measure(Parallel_Collection_Statement.ParallelForEach, "ParallelForEach");
 
 
-            var dir = Directory.GetCurrentDirectory(); 
-           // var _object = new emp();
-           //print(GetAttributefortheProperty(_object,"Age"));
+            //var dir = Directory.GetCurrentDirectory();
+            //var _object = new emp();
+            //print(GetAttributefortheProperty(_object, "Age"));
 
             // A sample showing how CustomStringEnumerator & EnumeratorConfig will be used
             //var collection = new string[] {
@@ -275,22 +337,22 @@ namespace Problem_Solving_Practices
             /// Safe And Unsafe Casting  
             //int x = 10;
             //string y = "ahmed";
-            object a = y;
-            //  int xx = (int) a;
-            string xxx = Convert.ToString(x); // Handles NULL S 
-            string b = (string)a.ToString(); // .Tostring Doesnot Handel Null 
-            System.Console.WriteLine(a.ToString());
-            System.Console.WriteLine(b);
-            System.Console.WriteLine(xxx);
-            System.Console.WriteLine(Convert.ToString(x) + y);
-            int[] array = { 1, 2, 3, 4, 5 };
+            //object a = y;
+            ////  int xx = (int) a;
+            //string xxx = Convert.ToString(x); // Handles NULL S 
+            //string b = (string)a.ToString(); // .Tostring Doesnot Handel Null 
+            //System.Console.WriteLine(a.ToString());
+            //System.Console.WriteLine(b);
+            //System.Console.WriteLine(xxx);
+            //System.Console.WriteLine(Convert.ToString(x) + y);
+            //int[] array = { 1, 2, 3, 4, 5 };
             // int[] arr = array.Clone();
             // array.CopyTo(arr);
 
             // int[] arr = { 5, 6, 7, 8, 2, 3, 4, 4 };
 
             // arr[arr.Length + 1] = 15; IndexOutOfRangeException: 
-            string s = "Sherihan";
+            //string s = "Sherihan";
             //   s.Substring(s.Length + 1);  //Error  System.ArgumentOutOfRangeException
 
             // arr = null ;

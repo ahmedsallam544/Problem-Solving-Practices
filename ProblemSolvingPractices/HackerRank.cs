@@ -8,7 +8,29 @@ namespace Problem_Solving_Practices
 {
     public partial class Runner
     {
-      
+       
+
+        public static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges)
+        {
+            //The apple tree is to the left of the house, and the orange tree is to its right.
+            int Validapples = 0;
+            int ValidOranges = 0; 
+            foreach (var apple in apples)
+            {
+                 
+                if (apple + a >= s && apple + a <= t)
+                    Validapples++;
+            }
+            foreach (var orange in oranges)
+            {
+               
+                if (orange + b <= t && orange + b >= s)
+                    ValidOranges++;
+            }
+            print(Validapples);
+            print(ValidOranges);
+        }
+
 
         public static List<int> circularPalindromes(string s)
         {

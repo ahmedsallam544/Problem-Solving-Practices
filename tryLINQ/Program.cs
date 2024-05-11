@@ -78,8 +78,71 @@ namespace Problem_Solving_Practices
             set.CopyTo(result);
             return result;
         }
+        enum Numbers
+        {
+            zero, one, two, three, four, five, six, seven, eight, nine
+
+        }
         static void Main(string[] args)
         {
+
+            #region Sequence operation
+            string[] compare = new string[] { "Ahmed", "Aml", "Asmaa", "Waffa" };
+            string[] compare1 = new string[] { "Eman", "NoYet", "Ibrahim", "Adel" };
+            var SequenceEqual =  compare.SequenceEqual(compare1);
+            var Ziping = compare.Zip(compare1, (a, b) => a +" => "+b );
+
+            #endregion
+
+            #region Defarred Excution
+            int[] number = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            int Sequence_operator = 0; //Sequence operator
+            var q = from n in number
+                    select ++Sequence_operator;
+            // Methods like ToList() cause the query to be
+            // executed immediately, caching the results.
+            //var q = (from n in number
+            //         select ++Sequence_operator)
+            //         .ToList();
+
+            // The local variable i has already been fully
+            // incremented before we iterate the results:
+            // Note, the local variable 'i' is not incremented
+            // until each element is evaluated (as a side-effect):
+            foreach (var v in q)
+            {
+                Console.WriteLine($"v = {v}, i = {Sequence_operator}");
+            }
+
+            #endregion
+
+            var numbersss = Enumerable.Repeat(Numbers.six, 10);
+
+            string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            var shortDigits = digits.Where((digit, index) => digit.Length < index);
+
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            var stringsEnums = new List<Numbers> { Numbers.zero, Numbers.one, Numbers.two, Numbers.three ,
+            Numbers.four ,Numbers.five ,Numbers.six ,Numbers.seven ,Numbers.eight ,Numbers.nine    };
+            var EnumsValidator = new List<Numbers> { Numbers.zero, Numbers.one, Numbers.two, Numbers.three };
+            var textNums = from n in numbers
+                           select strings[n];
+            var NumsEnums = from n in numbers
+                           select stringsEnums[n];
+            if (NumsEnums.Contains(Numbers.six))
+                Console.WriteLine("true");
+            var Any = NumsEnums.Any(p => EnumsValidator.Contains(p));
+            var All = NumsEnums.All(p => EnumsValidator.Contains(p));
+
+            var digitOddEvens = from n in numbers
+                             select new { Digit = strings[n], Even = (n % 2 == 0) };
+
+            //var digitOddEvens = from n in numbers
+            //                    select (Digit: strings[n], Even: (n % 2 == 0));
+
+
             var before = GC.GetTotalMemory(true);
             Console.WriteLine(before.ToString());
             string[] Qstrings = { "RemoveDuplicates", "ToArray", "RemoveDuplicates", "ToArray", "WriteLine", "WriteLine", "WriteLine" };
@@ -173,7 +236,7 @@ namespace Problem_Solving_Practices
 
             // Datasource 
             //Query Expression
-            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            List<int> numberss = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             IEnumerable<int> query =
               from num in numbers
               where num < 10 && num > 3
@@ -209,6 +272,8 @@ namespace Problem_Solving_Practices
                 Console.Write(ii);
             }
             Console.WriteLine("Ana hena");
+
+
         }
 
     

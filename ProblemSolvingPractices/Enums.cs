@@ -9,9 +9,14 @@ namespace Problem_Solving_Practices
 {
     enum CashTypes
     {
-        [Description("this is the first Value Changed")]
+        [Description(" this is the first Value Changed ")]
         firstValue = 1 ,
-        [Description("this is the second Value Changed")]
+        [Description(" this is the second Value Changed ")]
         SecondValue = 2
+    }
+    enum Numbers
+    {
+        zero ,  one ,  two ,  three ,  four ,  five ,  six ,  seven ,  eight ,  nine
+
     }
 }

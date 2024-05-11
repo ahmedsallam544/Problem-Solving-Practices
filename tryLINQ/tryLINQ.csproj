@@ -54,10 +54,6 @@
       <Project>{3D2B0D0D-B049-4077-9E07-6B10349ED156}</Project>
       <Name>Problem Solving Practices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TryCodeCsharp\TryCodeCsharp.csproj">
-      <Project>{8485D131-C1A5-43FB-9BE9-A46EA5E54ACD}</Project>
-      <Name>TryCodeCsharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
