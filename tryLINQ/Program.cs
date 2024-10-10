@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
  
 
@@ -83,8 +84,23 @@ namespace Problem_Solving_Practices
             zero, one, two, three, four, five, six, seven, eight, nine
 
         }
+
+        static void PrintOddNumbers()
+        {
+            int[] numbers = new int[]{ 1,21,3,4,5,6,7,8 };
+
+            IEnumerable<int> oddNumbers = from num in numbers where num % 2 != 0 select num;
+
+            foreach (var item in oddNumbers)
+            {
+                Console.WriteLine("the odd number is : {0}", item);
+            }
+
+        }
         static void Main(string[] args)
         {
+            PrintOddNumbers();
+            Thread.Sleep(1000);
 
             #region Sequence operation
             string[] compare = new string[] { "Ahmed", "Aml", "Asmaa", "Waffa" };

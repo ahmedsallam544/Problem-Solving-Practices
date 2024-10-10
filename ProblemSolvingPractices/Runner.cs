@@ -19,6 +19,10 @@ namespace Problem_Solving_Practices
  
         static void /*int*/ Main(string[] args)
         {
+            //Change Colors of the Consoles
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
+
             #region Use Undexer
             
             // Usage example
